@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Requests\User\Role;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+
+class StoreRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'nama' => 'required|string|max:255|unique:' . Role::class . ',name',
+            'permissions' => 'required|array',
+            'permissions.*' => Rule::exists(Permission::class, 'id'),
+        ];
+    }
+}
