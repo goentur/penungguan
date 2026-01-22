@@ -16,8 +16,10 @@ class PenggunaResource extends JsonResource
      {
           return [
                'id' => $this->id,
-               'email' => $this->email,
+               'nid' => $this->nid,
                'nama' => $this->name,
+               'email' => $this->email,
+               'telp' => $this->telp,
                'role' => $this->getRoleNames()[0],
           ];
      }

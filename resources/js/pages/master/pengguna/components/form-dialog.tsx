@@ -48,18 +48,17 @@ export default function FormDialog({
                     <div className="space-y-6 mt-5">
                         <div className="grid grid-cols-2 gap-4">
                             <FormInput
-                                id="email"
-                                type="email"
-                                value={data.email}
-                                onChange={(e) => setData((prevData: any) => ({ ...prevData, email: e.target.value }))}
+                                id="nid"
+                                type="text"
+                                value={data.nid}
+                                onChange={(e) => setData((prevData: any) => ({ ...prevData, nid: e.target.value }))}
                                 inputRef={(el) => {
                                     if (formRefs.current) {
-                                        formRefs.current['email'] = el;
+                                        formRefs.current['nid'] = el;
                                     }
                                 }}
-                                placeholder="Masukkan email"
-                                error={errors.email}
-                                readOnly={isEdit}
+                                placeholder="Masukkan nid"
+                                error={errors.nid}
                                 autoFocus
                                 required
                             />
@@ -75,6 +74,35 @@ export default function FormDialog({
                                 }}
                                 placeholder="Masukkan nama"
                                 error={errors.nama}
+                                required
+                            />
+                            <FormInput
+                                id="email"
+                                type="email"
+                                value={data.email}
+                                onChange={(e) => setData((prevData: any) => ({ ...prevData, email: e.target.value }))}
+                                inputRef={(el) => {
+                                    if (formRefs.current) {
+                                        formRefs.current['email'] = el;
+                                    }
+                                }}
+                                placeholder="Masukkan email"
+                                error={errors.email}
+                                readOnly={isEdit}
+                                required
+                            />
+                            <FormInput
+                                id="telp"
+                                type="text"
+                                value={data.telp}
+                                onChange={(e) => setData((prevData: any) => ({ ...prevData, telp: e.target.value }))}
+                                inputRef={(el) => {
+                                    if (formRefs.current) {
+                                        formRefs.current['telp'] = el;
+                                    }
+                                }}
+                                placeholder="Masukkan telp"
+                                error={errors.telp}
                                 required
                             />
                             {!isEdit && (<>

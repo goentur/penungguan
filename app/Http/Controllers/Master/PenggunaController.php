@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Common\DataRequest;
 use App\Http\Requests\Master\Pengguna\StoreRequest;
 use App\Http\Requests\Master\Pengguna\UpdateRequest;
+use App\Models\ObjekPajak;
 use App\Models\User;
 use App\Repositories\Master\Pengguna\PenggunaRepository;
 use App\Support\Facades\Memo;

@@ -20,7 +20,7 @@ class PenggunaRepository
     }
     public function data($request)
     {
-        $query = $this->model::with('roles')->select('id', 'name', 'email')
+        $query = $this->model::with('roles')->select('id', 'nid', 'name', 'email', 'telp')
             ->when($request->search, $this->applySearchFilter($request));
         $result = PenggunaResource::collection($query->latest()->paginate($request->perPage ?? 25))->response()->getData(true);
         return $result['meta'] + ['data' => $result['data']];
@@ -30,8 +30,10 @@ class PenggunaRepository
         try {
             DB::beginTransaction();
             $user = $this->model->create([
-                'email' => $request->email,
+                'nid' => $request->nid,
                 'name' => $request->nama,
+                'email' => $request->email,
+                'telp' => $request->telp,
                 'password' => Hash::make($request->password),
             ]);
             $user->assignRole($request->role);
@@ -46,8 +48,10 @@ class PenggunaRepository
         try {
             DB::beginTransaction();
             $user->update([
-                'email' => $request->email,
+                'nid' => $request->nid,
                 'name' => $request->nama,
+                'email' => $request->email,
+                'telp' => $request->telp,
             ]);
             $user->syncRoles($request->role);
             DB::commit();

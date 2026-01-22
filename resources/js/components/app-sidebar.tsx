@@ -27,28 +27,18 @@ const mainNavDashboard: NavItem[] = [
 ];
 const mainNavMaster: NavItem[] = [
     {
-        title: "Pegawai",
-        href: "master.pegawai.index",
-        icon: Users,
-        permission: 'pegawai-index',
-    },
-    {
         title: "Pengguna",
         href: "master.pengguna.index",
         icon: UserCheck,
         permission: 'pengguna-index',
     },
+];
+const mainNavTransaksi: NavItem[] = [
     {
-        title: "Lampiran",
-        href: "master.lampiran.index",
-        icon: NewspaperIcon,
-        permission: 'lampiran-index',
-    },
-    {
-        title: "Pelayanan",
-        href: "master.pelayanan.index",
-        icon: NotepadText,
-        permission: 'pelayanan-index',
+        title: "Penungguan",
+        href: "transaksi.penungguan.index",
+        icon: UserCheck,
+        permission: 'penungguan-index',
     },
 ];
 const footerNavItems: NavItem[] = [
@@ -85,6 +75,7 @@ export function AppSidebar() {
             <SidebarContent>
                 <NavMain items={mainNavDashboard} permissions={permissions} title="Dashboard" />
                 <NavMain items={mainNavMaster} permissions={permissions} title="Master" />
+                <NavMain items={mainNavTransaksi} permissions={permissions} title="Transaksi" />
             </SidebarContent>
 
             <SidebarFooter>

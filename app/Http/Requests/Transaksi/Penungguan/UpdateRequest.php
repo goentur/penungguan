@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Requests\Master\Pengguna;
+namespace App\Http\Requests\Transaksi\Penungguan;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
@@ -25,11 +24,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nid' => 'required|numeric',
-            'nama' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|' . Rule::unique('users')->ignore($this->user),
-            'telp'  => 'required|string|lowercase|max:20|' . Rule::unique('users')->ignore($this->user),
-            'role' => 'required|' . Rule::exists(Role::class, 'name'),
+            'objek' => 'required|numeric',
+            'nominal' => 'required|numeric',
+            'kendaraan' => 'required|in_array[1,2,3]',
         ];
     }
 }

@@ -26,8 +26,10 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'nid' => 'required|numeric',
             'nama' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+            'telp' => 'required|string|lowercase|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised()],
             'role' => 'required|' . Rule::exists(Role::class, 'name'),
         ];
