@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Transaksi;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Common\DataRequest;
+use App\Http\Requests\Transaksi\Penungguan\DataRequest;
 use App\Http\Requests\Transaksi\Penungguan\StoreRequest;
 use App\Http\Requests\Transaksi\Penungguan\UpdateRequest;
 use App\Models\Penungguan;
@@ -11,7 +11,7 @@ use App\Repositories\Transaksi\PenungguanRepository;
 use App\Support\Facades\Memo;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
-use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Request;
 
 class PenungguanController extends Controller implements HasMiddleware
 {
@@ -79,5 +79,9 @@ class PenungguanController extends Controller implements HasMiddleware
     {
         $this->repository->delete($penungguan->id);
         back()->with('success', 'Data berhasil dihapus');
+    }
+    public function data(DataRequest $request)
+    {
+        return response()->json($this->repository->data($request->objek), 200);
     }
 }
